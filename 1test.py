@@ -53,6 +53,7 @@ chat_id = -695765690
 telega_token = "5926919919:AAFCHFocMt_pdnlAgDo-13wLe4h_tHO0-GE"
 
 while True:
+    time.sleep(random.random())
     try:
         currentWindow = pyautogui.getActiveWindow().title
         # print(currentWindow)
@@ -62,8 +63,8 @@ while True:
 
     #if currentWindow == "TelegramDesktop":
     if currentWindow == "Telegram Web — Яндекс Браузер":
-        print(pyautogui.position())
-        time.sleep(1)
+        # print(pyautogui.position())
+        # time.sleep(1)
 
         """Открываем игру"""
         pyautogui.moveTo(880, 995, 1)
@@ -72,7 +73,6 @@ while True:
 
         """Проверка на темный экран"""
         check = [755, 328]
-        print(pyautogui.pixel(755, 328))
         if pyautogui.pixel(check[0], check[0]) == (23, 31, 42):
             pyautogui.moveTo(747, 242, 1)
             pyautogui.click()
@@ -84,33 +84,50 @@ while True:
 
         y = [453, 758]
         """Приближаем поле"""
-        pyautogui.moveTo(961, 606, 1)
+        #pyautogui.moveTo(961, 606, 1)
+        pyautogui.moveTo(971, 595, 1)
         pyautogui.scroll(2300)
 
         time.sleep(2)
         """Проверяем на цвет и красим"""
         count = 0
         start = time.time()
+        pyautogui.moveTo(977, 552, 1)
+        pyautogui.click()
+        pyautogui.moveTo(953, 852, 1)
         while count < 10:
             finish = time.time()
             time.sleep(random.random())
-            pix_x = random.randint(x[0], x[1])
-            pix_y = random.randint(y[0], y[1])
-            pyautogui.moveTo(pix_x, pix_y)
-            # pyautogui.click()
             # time.sleep(random.random())
             # pyautogui.moveTo(953, 852, 1)
             # time.sleep(random.random())
             # pyautogui.click()
             # count += 1
 
-            if pyautogui.pixel(pix_x, pix_y) != (0, 0, 0):
-                pyautogui.click()
-                time.sleep(0.1)
-                pyautogui.moveTo(953, 852)
-                time.sleep(0.1)
+            if pyautogui.pixel(977, 552) != (255, 255, 255):
                 pyautogui.click()
                 count += 1
+
+
+            # finish = time.time()
+            # time.sleep(random.random())
+            # pix_x = random.randint(x[0], x[1])
+            # pix_y = random.randint(y[0], y[1])
+            # pyautogui.moveTo(pix_x, pix_y)
+            # # pyautogui.click()
+            # # time.sleep(random.random())
+            # # pyautogui.moveTo(953, 852, 1)
+            # # time.sleep(random.random())
+            # # pyautogui.click()
+            # # count += 1
+            #
+            # if pyautogui.pixel(pix_x, pix_y) != (0, 0, 0):
+            #     pyautogui.click()
+            #     time.sleep(0.1)
+            #     pyautogui.moveTo(953, 852)
+            #     time.sleep(0.1)
+            #     pyautogui.click()
+            #     count += 1
 
             if finish - start > 180:
                 break
