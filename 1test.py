@@ -15,14 +15,18 @@ while True:
     except:
         pass
 
-    if currentWindow == "Telegram Web — Яндекс Браузер":
+    if currentWindow == "Not Pixel — Яндекс Браузер":
         # print(pyautogui.position())
+        # #print(pyautogui.pixel(pyautogui.position()[0], pyautogui.position()[1]))
         # time.sleep(1)
 
         """Открываем игру"""
-        pyautogui.moveTo(880, 995, 1)
+        pyautogui.moveTo(905, 1026, 1)
         pyautogui.click()
         time.sleep(random.randint(25, 30))
+
+        pyautogui.moveTo(1123, 424, 1)
+        pyautogui.click()
 
         """Проверка на темный экран"""
         check = [755, 328]
@@ -33,35 +37,48 @@ while True:
             pyautogui.click()
             continue
 
-        x = [808, 1111]
+        x = [835, 1007]
 
-        y = [453, 758]
+        y = [388, 643]
         """Приближаем поле"""
-        #pyautogui.moveTo(961, 606, 1)
-        pyautogui.moveTo(971, 595, 1)
-        pyautogui.scroll(2300)
+
+        pyautogui.moveTo(767, 446, 1)
+        pyautogui.scroll(2400)
+
 
         time.sleep(2)
+
+
+
         """Проверяем на цвет и красим"""
         count = 0
         start = time.time()
-        pyautogui.moveTo(977, 552, 1)
+        pyautogui.moveTo(random.randint(x[0], x[1]), random.randint(y[0], y[1]))
         pyautogui.click()
-        pyautogui.moveTo(953, 852, 1)
-        while count < 10:
+
+        while count < 16:
             finish = time.time()
             time.sleep(random.random())
+            x_pix = random.randint(x[0], x[1])
+            y_pix = random.randint(y[0], y[1])
+            pyautogui.moveTo(x_pix, y_pix)
+            pyautogui.click()
 
-            if pyautogui.pixel(977, 552) != (255, 255, 255):
+            if pyautogui.pixel(x_pix, y_pix) == (23, 31, 42):
+                break
+
+            if pyautogui.pixel(x_pix, y_pix) != (0, 0, 0) and pyautogui.pixel(x_pix, y_pix) != (54, 144, 234) and pyautogui.pixel(x_pix, y_pix) != (66, 166, 255):
+                pyautogui.moveTo(954, 890)
                 pyautogui.click()
                 count += 1
+                time.sleep(random.random())
 
             if finish - start > 180:
                 break
 
         """Закрываем игру"""
         time.sleep(random.randint(5, 10))
-        pyautogui.moveTo(747, 242, 1)
+        pyautogui.moveTo(769, 232, 1)
         pyautogui.click()
         time.sleep(0.5)
         pyautogui.click()
